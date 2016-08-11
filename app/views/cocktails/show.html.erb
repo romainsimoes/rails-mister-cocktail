@@ -5,5 +5,16 @@
   <%= @cocktail.name %>
 </p>
 
+<% @cocktail.doses.each do |dose| %>
+  <%= dose.description %>
+  <%= Ingredient.find(dose.ingredient_id).name %>
+  <ul class='list-inline'>
+    <li><%= link_to '', edit_cocktail_dose_path(@cocktail, dose), { class: 'navbar-wagon-link fa fa-pencil' } %></li>
+    <li><%= link_to '', cocktail_dose_path(@cocktail, dose), method: :delete, data: { confirm: 'Are you sure?' }, class: 'navbar-wagon-link fa fa-trash' %>
+    </li>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
-<%= link_to 'Back', cocktails_path %>
+<%= link_to 'Back', cocktails_path %> |
+<%= link_to 'Add a dose', new_cocktail_dose_path(@cocktail) %>

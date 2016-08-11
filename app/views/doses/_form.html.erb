@@ -1,0 +1,13 @@
+<%= form_for [@cocktail, @dose] do |f| %>
+
+  <div class="form-inputs">
+    <%= f.label :description %>:
+    <%= f.text_field :description %>
+    <%= f.label :ingredient_id %>:
+    <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
