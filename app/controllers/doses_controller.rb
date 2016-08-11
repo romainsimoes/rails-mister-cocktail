@@ -18,11 +18,8 @@ class DosesController < ApplicationController
 
   def create
     @dose = @cocktail.doses.build(dose_params)
-    if @dose.save
-      redirect_to cocktail_path(@cocktail)
-    else
-      render :new
-    end
+    @dose.save
+    redirect_to cocktail_path(@cocktail)
   end
 
   def update
