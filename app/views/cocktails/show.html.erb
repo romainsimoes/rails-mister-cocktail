@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @cocktail.photo.url(:cocktail_full_pic) %>
+<%= image_tag @cocktail.photo.url(:cocktail_full_pic) if !@cocktail.photo.nil? %>
 <p>
   <strong>Name:</strong>
   <%= @cocktail.name %>
