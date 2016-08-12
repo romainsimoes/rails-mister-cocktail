@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @cocktail.photo.url(:cocktail_full_pic) %>
 <p>
   <strong>Name:</strong>
   <%= @cocktail.name %>
@@ -7,15 +8,32 @@
 
 <% @cocktail.doses.each do |dose| %>
   <%= dose.description %>
-  <%= Ingredient.find(dose.ingredient_id).name %>
+  <%= dose.ingredient.name %>
   <ul class='list-inline'>
     <li><%= link_to '', edit_cocktail_dose_path(@cocktail, dose), { class: 'navbar-wagon-link fa fa-pencil' } %></li>
     <li><%= link_to '', cocktail_dose_path(@cocktail, dose), method: :delete, data: { confirm: 'Are you sure?' }, class: 'navbar-wagon-link fa fa-trash' %>
     </li>
   </ul>
+<p>
 <% end %>
+<strong>Review:</strong>
+<div class='reviews'>
+  <% @cocktail.reviews.each do |review| %>
+    <div class='review'>
+      <%= review.content %>
+      <%= review.rating %>
+      <ul class='list-inline'>
+        <li><%= link_to '', edit_cocktail_review_path(@cocktail, review), { class: 'navbar-wagon-link fa fa-pencil' } %></li>
+        <li><%= link_to '', cocktail_review_path(@cocktail, review), method: :delete, data: { confirm: 'Are you sure?' }, class: 'navbar-wagon-link fa fa-trash' %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+</p>
+
 
 <%= render '/doses/form', dose: @dose %>
+<%= render '/reviews/form', review: @review %>
 
 <%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
 <%= link_to 'Back', cocktails_path %>

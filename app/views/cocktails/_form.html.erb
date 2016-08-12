@@ -2,7 +2,6 @@
   <% if cocktail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(cocktail.errors.count, "error") %> prohibited this cocktail from being saved:</h2>
-
       <ul>
       <% cocktail.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,13 +9,11 @@
       </ul>
     </div>
   <% end %>
+<% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for(cocktail) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit %>
 <% end %>

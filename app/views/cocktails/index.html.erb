@@ -12,7 +12,7 @@
 
   <tbody>
     <% @cocktails.each do |cocktail| %>
-      <tr>
+        <td><%= image_tag cocktail.photo.url(:cocktail_profile_pic) %></td>
         <td><%= cocktail.name %></td>
         <td><%= link_to 'Show', cocktail %></td>
         <td><%= link_to 'Edit', edit_cocktail_path(cocktail) %></td>
