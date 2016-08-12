@@ -208,7 +208,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
   byebug
-  cloudinary (= 1.1.0)
+  cloudinary
   coffee-rails (~> 4.2)
   figaro
   font-awesome-sass
